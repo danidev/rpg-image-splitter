@@ -1,100 +1,73 @@
-# Image Splitter for A4 Printing
+# RPG Image Splitter
 
-rpg-image-splitter is a Python script that resizes and splits an image into multiple A4-sized sections for easy printing. Ideal for RPG battlemaps, it ensures the best possible fit while maintaining aspect ratio. Supports PNG and JPEG images and allows scaling to enhance detail.
+**RPG Image Splitter** is a Python script that resizes and splits an image into multiple A4-sized sections for easy printing.
+It's ideal for RPG battlemaps, ensuring the best possible fit while maintaining the original aspect ratio.
 
 ## Features
-✅ Automatically detects image orientation  
-✅ Resizes image while preserving aspect ratio  
-✅ Splits the image into multiple A4-sized sheets  
-✅ Saves the output files in the same folder as the original image  
-✅ Supports **PNG, JPG, and other common image formats**  
-
----
+✔️ Supports **PNG** and **JPEG** images
+✔️ **Maintains aspect ratio** while resizing
+✔️ **Splits images** across multiple A4 sheets (default: 2x2 grid)
+✔️ Saves output images in the **same folder** as the original file
+✔️ Automatically **detects orientation** (landscape/portrait)
 
 ## Installation
 
-This script requires Python and the **Pillow** library.
+### 1. Install Python
+Ensure you have Python **3.8+** installed.
+[Download Python](https://www.python.org/downloads/) if needed.
 
-### Install Python (if not installed)
-#### **Windows:**
-1. Download and install Python from [python.org](https://www.python.org/downloads/)
-2. Ensure Python and `pip` are added to the system PATH during installation.
+### 2. Install Dependencies
+Use `pip` to install the required library:
 
-#### **Linux/macOS:**
-Most distributions come with Python pre-installed. If not, install it via:
-```sh
-sudo apt install python3  # Ubuntu/Debian
-brew install python       # macOS
-```
-
-### Install Dependencies
-Run the following command to install the required Python package:
 ```sh
 pip install pillow
 ```
 
----
+### Usage
 
-## Usage
+#### Option 1: Running as a script
+If you're using `splitter.py` as a standalone script, run:
 
-### Basic Usage:
 ```sh
-python split_image.py <image_path>
+python splitter.py "<image_path>" [scale_factor]
 ```
-Example:
+
+**Example:**
 ```sh
-python split_image.py my_map.png
+python splitter.py "battlemap.jpg" 2
 ```
-This will resize and split `my_map.png` into 4 A4-sized images.
+This will resize `battlemap.png` to fit **4 A4 sheets (2x2 grid)** and save the parts as:
 
-### Enlarging the Image:
-To **double** the image size before splitting (useful for better print quality):
+```
+battlemap_part_1.jpg
+battlemap_part_2.jpg
+battlemap_part_3.jpg
+battlemap_part_4.jpg
+```
+
+#### Option 2: Running as a package
+If you're running the script from the installed package, use:
+
 ```sh
-python split_image.py my_map.png 2
+python -m rpg_image_splitter.splitter "<image_path>" [scale_factor]
 ```
-To **triple** the size:
+
+**Example:**
 ```sh
-python split_image.py my_map.png 3
+python -m rpg_image_splitter.splitter "battlemap.png" 2
 ```
 
----
-
-## Output Files
-The script saves the split images in the **same folder as the original image**.  
-For example, if your input file is:
-```
-/home/user/images/map.png
-```
-The output files will be:
-```
-/home/user/images/map_part_1.jpg
-/home/user/images/map_part_2.jpg
-/home/user/images/map_part_3.jpg
-/home/user/images/map_part_4.jpg
-```
-
----
-
-## Troubleshooting
-
-### Error: "cannot write mode RGBA as JPEG"
-**Solution:** The input image has transparency. The script automatically converts it to RGB when saving as JPEG.
-
-### Error: "ModuleNotFoundError: No module named 'PIL'"
-**Solution:** Install Pillow using:
-```sh
-pip install pillow
-```
-
----
+If you want **even larger prints**, increase `scale_factor` (e.g., `3` for 3x3 = 9 A4 sheets).
 
 ## License
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License.  
-Feel free to modify and distribute it as you wish. ⭐
-
----
+## Future Enhancements (TODO)
+🔹 Add GUI support (Tkinter/PyQt)
+🔹 Improve error handling & logging
+🔹 Support more image formats
 
 ## Contributing
+Pull requests are welcome! Feel free to open an issue or suggest features.
 
-If you have suggestions or improvements, feel free to fork the repository and submit a pull request! 🎉
+🚀 Happy printing & enjoy your RPG battlemaps!
